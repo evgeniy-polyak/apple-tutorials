@@ -9,11 +9,19 @@
 import SwiftUI
 
 struct Section_2_View: View {
+    let gradientColors: [Color] = [
+        .gradientTop,
+        .gradientBottom
+    ]
     
     var body: some View {
-        VStack {
-            
+        TabView {
+            WelcomePage()
+            FeaturesPage()
         }
+        .background(Gradient(colors: gradientColors))
+        .tabViewStyle(.page)
+        .foregroundStyle(.white)
     }
 }
 

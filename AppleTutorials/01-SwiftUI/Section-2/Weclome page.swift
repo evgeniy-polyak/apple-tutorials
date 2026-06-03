@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Section_2_1_Weclome_page: View {
+struct WelcomePage: View {
     var body: some View {
         VStack {
             ZStack {
@@ -38,5 +38,5 @@ struct Section_2_1_Weclome_page: View {
 }
 
 #Preview {
-    Section_2_1_Weclome_page()
+    WelcomePage()
 }
