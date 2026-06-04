@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5B1C753D2FD17BBC00ECCB20 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5B1C753C2FD17BBC00ECCB20 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		5B1C75192FD0133D00ECCB20 /* AppleTutorials.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleTutorials.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B1C753C2FD17BBC00ECCB20 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		5B1C75102FD0133D00ECCB20 = {
 			isa = PBXGroup;
 			children = (
+				5B1C753C2FD17BBC00ECCB20 /* README.md */,
 				5B1C751B2FD0133D00ECCB20 /* AppleTutorials */,
 				5B1C751A2FD0133D00ECCB20 /* Products */,
 			);
@@ -109,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B1C753D2FD17BBC00ECCB20 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
