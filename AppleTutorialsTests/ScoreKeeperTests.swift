@@ -6,6 +6,7 @@
 //
 
 import Testing
+
 @testable import AppleTutorials
 
 struct ScoreKeeperTests {
@@ -23,6 +24,27 @@ struct ScoreKeeperTests {
         for player in scoreboard.players {
             #expect(player.score == newValue)
         }
+    }
+
+    @Test("Highest score wins")
+    func highestScoreWinsTest() async throws {
+        let scoreboard = Scoreboard(
+            players: [
+                Player("Evgeniy", score: 23),
+                Player("Jhanna", score: 23),
+                Player("Mikhail", score: 20),
+                Player("Ksenia", score: 20),
+            ],
+            state: .gameOver,
+            doesHighestScoreWin: true
+        )
+
+        let winners = [
+            Player("Evgeniy", score: 23),
+            Player("Jhanna", score: 23),
+        ]
+        
+        #expect(winners == scoreboard.winners)
     }
 
 }

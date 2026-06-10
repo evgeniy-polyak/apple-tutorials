@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ScoreKeeper: View {
     @State private var scoreboard = Scoreboard()
-    private var startingsPoints = 0
+    @State private var startingsPoints = 0
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -18,6 +18,9 @@ struct ScoreKeeper: View {
                 .font(.title)
                 .bold()
                 .padding(.bottom)
+
+            SettingsView(startingsPoint: $startingsPoints)
+                .padding(.bottom, 8)
 
             Grid {
                 GridRow {
@@ -39,27 +42,14 @@ struct ScoreKeeper: View {
             }
 
             Spacer()
+            
             Divider()
-            HStack {
+            HStack(alignment: .center) {
                 Button("Add Player", systemImage: "plus.circle.fill") {
                     scoreboard.players.append(Player(""))
                 }
                 .padding()
-
-                Spacer()
-
-                Button("Clear scores", systemImage: "xmark.circle.fill") {
-                    for i in 0..<scoreboard.players.count {
-                        scoreboard.players[i].score = 0
-                    }
-
-                    // TODO: Реализовать очистку массива - красиво!
-                    // scoreboard.players = scoreboard.players.map { }
-                }
-                .padding()
-            }
-
-            HStack(alignment: .center) {
+                
                 Spacer()
                 switch scoreboard.state {
                 case .setup:
@@ -74,7 +64,7 @@ struct ScoreKeeper: View {
                     }
                     .font(.headline)
                     .buttonStyle(.borderedProminent)
-//                    .controlSize(.regular)
+                //                    .controlSize(.regular)
 
                 case .playing:
                     Button {
@@ -87,7 +77,7 @@ struct ScoreKeeper: View {
                     }
                     .font(.headline)
                     .buttonStyle(.borderedProminent)
-                    
+
                 case .gameOver:
                     Button {
                         scoreboard.state = .setup
@@ -99,7 +89,7 @@ struct ScoreKeeper: View {
                     }
                     .font(.headline)
                     .buttonStyle(.borderedProminent)
-                    
+
                 }
 
                 Spacer()
