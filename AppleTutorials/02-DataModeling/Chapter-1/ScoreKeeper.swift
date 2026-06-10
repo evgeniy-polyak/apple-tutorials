@@ -5,17 +5,11 @@
 //  Created by Evgeniy Polyak on 08.06.2026.
 //
 
-import SwiftUI
 import Foundation
+import SwiftUI
 
 struct ScoreKeeper: View {
-    @State private var players: [Player] = [
-        Player("Евгений"),
-        Player("Жанна"),
-        Player("Михаил"),
-        Player("Ксения")
-    ]
-    
+    @State private var scoreboard = Scoreboard()
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -23,47 +17,51 @@ struct ScoreKeeper: View {
                 .font(.title)
                 .bold()
                 .padding(.bottom)
-            
-            Grid() {
+
+            Grid {
                 GridRow {
                     Text("Player")
                         .gridColumnAlignment(.leading)
                     Text("Score")
                 }
                 .font(.headline)
-                
-                ForEach(0..<players.count, id: \.description) { index in
+                Divider()
+
+                ForEach($scoreboard.players) { $player in
                     GridRow {
-                        TextField("Name: ", text: $players[index].name)
-                        Text("\(players[index].score)")
-                        Stepper("", value: $players[index].score)
+                        TextField("Name: ", text: $player.name)
+                        Text("\(player.score)")
+                        Stepper("", value: $player.score)
                             .labelsHidden()
                     }
                 }
             }
-            .padding(.vertical)
-            
-            
-            
-            Button("Add Player", systemImage: "plus") {
-                players.append(Player(""))
-                
-            }
             
             Spacer()
-        }
-        .padding()
-    }
-}
+            Divider()
+            HStack {
+                Button("Add Player", systemImage: "plus.circle.fill") {
+                    scoreboard.players.append(Player(""))
+                }
+                .padding()
 
-struct Player: Identifiable {
-    let id: UUID = UUID()
-    var name: String
-    var score: Int = 0
-    
-    init(_ name: String, score: Int = 0) {
-        self.name = name
-        self.score = score
+                Spacer()
+
+                Button("Clear scores", systemImage: "xmark.circle.fill") {
+                    for i in 0..<scoreboard.players.count {
+                        scoreboard.players[i].score = 0
+                    }
+
+                    // TODO: Реализовать очистку массива - красиво!
+                    // scoreboard.players = scoreboard.players.map { }
+                }
+                .padding()
+            }
+        }
+        .padding(.vertical)
+        
+        
+        .padding()
     }
 }
 
