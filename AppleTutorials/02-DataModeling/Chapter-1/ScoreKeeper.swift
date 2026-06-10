@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ScoreKeeper: View {
     @State private var scoreboard = Scoreboard()
+    private var startingsPoints = 0
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -36,7 +37,7 @@ struct ScoreKeeper: View {
                     }
                 }
             }
-            
+
             Spacer()
             Divider()
             HStack {
@@ -57,10 +58,56 @@ struct ScoreKeeper: View {
                 }
                 .padding()
             }
+
+            HStack(alignment: .center) {
+                Spacer()
+                switch scoreboard.state {
+                case .setup:
+                    Button {
+                        scoreboard.state = .playing
+                        scoreboard.resetScores(to: startingsPoints)
+                    } label: {
+                        Image(systemName: "play.fill")
+                        Text("Start Game")
+                            .frame(maxWidth: .infinity)
+                            .padding(6)
+                    }
+                    .font(.headline)
+                    .buttonStyle(.borderedProminent)
+//                    .controlSize(.regular)
+
+                case .playing:
+                    Button {
+                        scoreboard.state = .gameOver
+                    } label: {
+                        Image(systemName: "stop.fill")
+                        Text("End Game")
+                            .frame(maxWidth: .infinity)
+                            .padding(6)
+                    }
+                    .font(.headline)
+                    .buttonStyle(.borderedProminent)
+                    
+                case .gameOver:
+                    Button {
+                        scoreboard.state = .setup
+                    } label: {
+                        Image(systemName: "arrow.counterclockwise")
+                        Text("Reset Game")
+                            .frame(maxWidth: .infinity)
+                            .padding(6)
+                    }
+                    .font(.headline)
+                    .buttonStyle(.borderedProminent)
+                    
+                }
+
+                Spacer()
+            }
+
         }
         .padding(.vertical)
-        
-        
+
         .padding()
     }
 }

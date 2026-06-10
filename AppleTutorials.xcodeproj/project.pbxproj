@@ -10,9 +10,20 @@
 		5B1C753D2FD17BBC00ECCB20 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5B1C753C2FD17BBC00ECCB20 /* README.md */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5BD0EF7F2FD99EF1006F682D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B1C75112FD0133D00ECCB20 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B1C75182FD0133D00ECCB20;
+			remoteInfo = AppleTutorials;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5B1C75192FD0133D00ECCB20 /* AppleTutorials.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleTutorials.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1C753C2FD17BBC00ECCB20 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5BD0EF7B2FD99EF1006F682D /* AppleTutorialsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppleTutorialsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -21,10 +32,22 @@
 			path = AppleTutorials;
 			sourceTree = "<group>";
 		};
+		5BD0EF7C2FD99EF1006F682D /* AppleTutorialsTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AppleTutorialsTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5B1C75162FD0133D00ECCB20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BD0EF782FD99EF1006F682D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,6 +62,7 @@
 			children = (
 				5B1C753C2FD17BBC00ECCB20 /* README.md */,
 				5B1C751B2FD0133D00ECCB20 /* AppleTutorials */,
+				5BD0EF7C2FD99EF1006F682D /* AppleTutorialsTests */,
 				5B1C751A2FD0133D00ECCB20 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				5B1C75192FD0133D00ECCB20 /* AppleTutorials.app */,
+				5BD0EF7B2FD99EF1006F682D /* AppleTutorialsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +101,29 @@
 			productReference = 5B1C75192FD0133D00ECCB20 /* AppleTutorials.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5BD0EF7A2FD99EF1006F682D /* AppleTutorialsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BD0EF812FD99EF1006F682D /* Build configuration list for PBXNativeTarget "AppleTutorialsTests" */;
+			buildPhases = (
+				5BD0EF772FD99EF1006F682D /* Sources */,
+				5BD0EF782FD99EF1006F682D /* Frameworks */,
+				5BD0EF792FD99EF1006F682D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5BD0EF802FD99EF1006F682D /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5BD0EF7C2FD99EF1006F682D /* AppleTutorialsTests */,
+			);
+			name = AppleTutorialsTests;
+			packageProductDependencies = (
+			);
+			productName = AppleTutorialsTests;
+			productReference = 5BD0EF7B2FD99EF1006F682D /* AppleTutorialsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -88,6 +136,10 @@
 				TargetAttributes = {
 					5B1C75182FD0133D00ECCB20 = {
 						CreatedOnToolsVersion = 16.2;
+					};
+					5BD0EF7A2FD99EF1006F682D = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 5B1C75182FD0133D00ECCB20;
 					};
 				};
 			};
@@ -106,6 +158,7 @@
 			projectRoot = "";
 			targets = (
 				5B1C75182FD0133D00ECCB20 /* AppleTutorials */,
+				5BD0EF7A2FD99EF1006F682D /* AppleTutorialsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -119,6 +172,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5BD0EF792FD99EF1006F682D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -129,7 +189,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5BD0EF772FD99EF1006F682D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5BD0EF802FD99EF1006F682D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B1C75182FD0133D00ECCB20 /* AppleTutorials */;
+			targetProxy = 5BD0EF7F2FD99EF1006F682D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5B1C75252FD0133F00ECCB20 /* Debug */ = {
@@ -309,6 +384,42 @@
 			};
 			name = Release;
 		};
+		5BD0EF822FD99EF1006F682D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2TFTP56H44;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.polyak.tutorials.AppleTutorialsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppleTutorials.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppleTutorials";
+			};
+			name = Debug;
+		};
+		5BD0EF832FD99EF1006F682D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2TFTP56H44;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.polyak.tutorials.AppleTutorialsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppleTutorials.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppleTutorials";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -326,6 +437,15 @@
 			buildConfigurations = (
 				5B1C75282FD0133F00ECCB20 /* Debug */,
 				5B1C75292FD0133F00ECCB20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BD0EF812FD99EF1006F682D /* Build configuration list for PBXNativeTarget "AppleTutorialsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BD0EF822FD99EF1006F682D /* Debug */,
+				5BD0EF832FD99EF1006F682D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
