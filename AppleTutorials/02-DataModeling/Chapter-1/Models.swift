@@ -37,14 +37,29 @@ struct Scoreboard {
     var doesHighestScoreWin = true
     
     var winners: [Player] {
-        players
+        guard state == .gameOver else { return [] }
+        
+        var winningScore = 0
+        if doesHighestScoreWin {
+            winningScore = Int.min
+            for player in players {
+                winningScore = max(winningScore, player.score)
+            }
+        } else {
+            winningScore = Int.max
+            for player in players {
+                winningScore = min(winningScore, player.score)
+            }
+            
+        }
+        
+        return players.filter { $0.score == winningScore }
     }
     
     mutating func resetScores(to newValue: Int = 0) {
         for index in 0..<players.count {
             players[index].score = newValue
         }
-        
     }
 }
 

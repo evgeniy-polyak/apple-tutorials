@@ -46,5 +46,27 @@ struct ScoreKeeperTests {
         
         #expect(winners == scoreboard.winners)
     }
+    
+    @Test("Lower score wins")
+    func lowerScoreWinsTest() async throws {
+        let scoreboard = Scoreboard(
+            players: [
+                Player("Evgeniy", score: 23),
+                Player("Jhanna", score: 23),
+                Player("Mikhail", score: 20),
+                Player("Ksenia", score: 20),
+            ],
+            state: .gameOver,
+            doesHighestScoreWin: false
+        )
+        
+        let winners  = [
+            Player("Mikhail", score: 20),
+            Player("Ksenia", score: 20),
+        ]
+        
+        #expect(winners == scoreboard.winners)
+
+    }
 
 }

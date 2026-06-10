@@ -11,6 +11,7 @@ import SwiftUI
 struct ScoreKeeper: View {
     @State private var scoreboard = Scoreboard()
     @State private var startingsPoints = 0
+    @State private var doesHighestScoreWin = true
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -19,8 +20,12 @@ struct ScoreKeeper: View {
                 .bold()
                 .padding(.bottom)
 
-            SettingsView(startingsPoint: $startingsPoints)
-                .padding(.bottom, 8)
+            SettingsView(
+                startingsPoint: $startingsPoints,
+                doesHighestScoreWin: $scoreboard.doesHighestScoreWin
+            )
+            .disabled(scoreboard.state != .setup)
+            .padding(.bottom, 8)
 
             Grid {
                 GridRow {
@@ -33,7 +38,14 @@ struct ScoreKeeper: View {
 
                 ForEach($scoreboard.players) { $player in
                     GridRow {
-                        TextField("Name: ", text: $player.name)
+                        HStack {
+                            if scoreboard.winners.contains(player) {
+                                Image(systemName: "crown.fill")
+                                    .foregroundStyle(Color.yellow)
+                            }
+                            TextField("Name: ", text: $player.name)
+                                .disabled(scoreboard.state != .setup)
+                        }
                         Text("\(player.score)")
                         Stepper("", value: $player.score)
                             .labelsHidden()
@@ -42,14 +54,19 @@ struct ScoreKeeper: View {
             }
 
             Spacer()
-            
+
             Divider()
             HStack(alignment: .center) {
-                Button("Add Player", systemImage: "plus.circle.fill") {
+                Button {
                     scoreboard.players.append(Player(""))
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                    Text("Add Player")
+                        .padding(6)
                 }
-                .padding()
-                
+                .opacity(scoreboard.state == .setup ? 1.0 : 0)
+
+
                 Spacer()
                 switch scoreboard.state {
                 case .setup:
@@ -59,12 +76,9 @@ struct ScoreKeeper: View {
                     } label: {
                         Image(systemName: "play.fill")
                         Text("Start Game")
-                            .frame(maxWidth: .infinity)
                             .padding(6)
                     }
                     .font(.headline)
-                    .buttonStyle(.borderedProminent)
-                //                    .controlSize(.regular)
 
                 case .playing:
                     Button {
@@ -72,28 +86,28 @@ struct ScoreKeeper: View {
                     } label: {
                         Image(systemName: "stop.fill")
                         Text("End Game")
-                            .frame(maxWidth: .infinity)
                             .padding(6)
                     }
                     .font(.headline)
-                    .buttonStyle(.borderedProminent)
 
                 case .gameOver:
                     Button {
                         scoreboard.state = .setup
+
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                         Text("Reset Game")
-                            .frame(maxWidth: .infinity)
                             .padding(6)
                     }
                     .font(.headline)
-                    .buttonStyle(.borderedProminent)
 
                 }
 
-                Spacer()
             }
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.roundedRectangle)
+            .controlSize(.large)
+//            .tint(.blue)
 
         }
         .padding(.vertical)
